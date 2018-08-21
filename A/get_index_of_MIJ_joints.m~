@@ -1,0 +1,11 @@
+function listIdx = getIdxMostJoints(matrix_MIJ_joints,nof_MIJ_joints)
+    list_unique_joints = unique(matrix_MIJ_joints);
+    num_of_occurrence = zeros(1,size(list_unique_joints,1));
+    for a=1:size(list_unique_joints,1)
+        listValueAngle(a) = sum(sum(matrix_MIJ_joints ==list_unique_joints(a)));
+    end
+    [;ind] = sort(listValueAngle,'descend');
+    listIndex = ind(1:nof_MIJ_joints);
+
+    listIdx = list_unique_joints(listIndex);
+end

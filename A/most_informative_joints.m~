@@ -1,0 +1,18 @@
+function  list_MIJ_each_action = most_informative_joints(X,Y,Z,nof_joints)
+    nof_joints = size(X,2);
+    nof_frames = size(X,1) ;
+    assert(size(Y, 2) == nof_joints);
+    assert(size(Z, 2) == nof_joints);
+    assert(size(Y, 1) == nof_frames);
+    assert(size(Z, 1) == nof_frames);
+    list_value_variance_joints = [];
+    for i=1:nof_joint
+        list_value_joint =[];
+        for j=1:nof_frames
+               a = [X(j,i),Y(j,i),Z(j,i)];
+               list_value_joint = [list_value_joint;a];
+        end
+        value_variance_joint = compute_variance_joints(list_value_joint);
+        list_value_variance_joints = [list_value_variance_joints,value_variance_joint]
+    end
+end
