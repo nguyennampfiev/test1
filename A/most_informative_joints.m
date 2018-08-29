@@ -15,6 +15,6 @@ function  list_MIJ_each_action = most_informative_joints(X,Y,Z,nof_MIJ_joints)
         value_variance_joint = compute_variance_joints(list_value_joint);
         list_value_variance_joints(i)= value_variance_joint;
     end
-    [value;ind] = sort(Fk,'descend');
-    list_MIJ = ind(1:nof_MIJ_joints);
+    [value ind] = sort(list_value_variance_joints,'descend');
+    list_MIJ_each_action = ind(1:nof_MIJ_joints);
 end

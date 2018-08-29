@@ -18,7 +18,7 @@ function bodyinfo = read_skeleton_file(filename)
 %   https://msdn.microsoft.com/en-us/library/dn799271.aspx
 %   https://msdn.microsoft.com/en-us/library/dn782037.aspx
 
-fileid = fopen(filename)
+fileid = fopen(filename);
 framecount = fscanf(fileid,'%d',1); % no of the recorded frames
 
 bodyinfo=[]; % to store multiple skeletons per frame
