@@ -11,13 +11,15 @@ function [full_cov_matrix,cov_matrix] = covariance_features(X, Y, Z, T, nLevels,
 %         add_time = true;
 %     end
     %
-    normX =normalize_skeleton(X);
-    normY =normalize_skeleton(Y);
-    normZ =normalize_skeleton(Z);
+    normX =X;
+    normY =Y;
+    normZ =Z;
     normT =normalize_skeleton(T);
     %  Compute  covariance matrix
     full_cov_matrix = cell(1, nLevels);
     cov_matrix = cell(1, nLevels);
+%     full_cov_matrix = cell(1, 1);
+%     cov_matrix = cell(1, 1);
     for l = 1:nLevels
         nofMats = 2 ^ (l - 1);
         size_window = 1 / nofMats;
@@ -36,7 +38,7 @@ function [full_cov_matrix,cov_matrix] = covariance_features(X, Y, Z, T, nLevels,
             sliceX = normX(sliceInds, :);
             sliceY = normY(sliceInds, :);
             sliceZ = normZ(sliceInds, :);
-%             sliceT = normT(sliceInds, :);
+            sliceT = normT(sliceInds, :);
             if ~add_time
                 slice_vars = [sliceX sliceY sliceZ];
             else 
